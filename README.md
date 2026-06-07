@@ -1,6 +1,6 @@
 # Velour Beauty
 
-![Velour Beauty Preview](https://raw.githubusercontent.com/lina98st/velour-beauty/main/assets/preview.png)
+![Velour Beauty Preview](https://raw.githubusercontent.com/lina98st/velour-beauty/main/src/assets/preview.png)
 
 A premium beauty studio website for Velour Beauty, a lash and nail studio based in Berlin, Germany.
 
