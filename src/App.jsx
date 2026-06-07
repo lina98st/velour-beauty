@@ -9,7 +9,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <main className="bg-black text-white overflow-x-hidden">
+    <div style={{ background: '#000', color: '#fff', overflowX: 'hidden', width: '100%' }}>
       <Navbar />
       <Hero />
       <Services />
@@ -18,7 +18,7 @@ function App() {
       <Booking />
       <Contact />
       <Footer />
-    </main>
+    </div>
   )
 }
 
