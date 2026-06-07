@@ -1,53 +1,39 @@
 import { motion } from 'framer-motion'
 
-const leopardSpots = Array.from({ length: 30 }, (_, i) => ({
-  id: i,
-  x: Math.random() * 100,
-  y: Math.random() * 100,
-  size: Math.random() * 60 + 20,
-  rotation: Math.random() * 360,
-  opacity: Math.random() * 0.15 + 0.05,
-}))
-
 export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
 
       <div className="absolute inset-0 z-0">
-        {leopardSpots.map((spot) => (
-          <div
-            key={spot.id}
-            className="absolute"
-            style={{
-              left: `${spot.x}%`,
-              top: `${spot.y}%`,
-              width: `${spot.size}px`,
-              height: `${spot.size * 0.7}px`,
-              transform: `rotate(${spot.rotation}deg)`,
-              opacity: spot.opacity,
-            }}
-          >
-            <svg viewBox="0 0 100 70" className="w-full h-full">
-              <ellipse cx="50" cy="35" rx="45" ry="30" fill="#7c3aed" />
-              <ellipse cx="50" cy="35" rx="30" ry="18" fill="black" />
-              <ellipse cx="25" cy="15" rx="12" ry="8" fill="#7c3aed" />
-              <ellipse cx="75" cy="15" rx="12" ry="8" fill="#7c3aed" />
-              <ellipse cx="20" cy="55" rx="10" ry="7" fill="#7c3aed" />
-              <ellipse cx="80" cy="55" rx="10" ry="7" fill="#7c3aed" />
-            </svg>
-          </div>
-        ))}
+        <svg className="w-full h-full opacity-10" viewBox="0 0 800 800">
+          {Array.from({ length: 40 }, (_, i) => {
+            const x = (i % 8) * 100 + (Math.floor(i / 8) % 2 === 0 ? 0 : 50)
+            const y = Math.floor(i / 8) * 100 + 20
+
+            return (
+              <g key={i} transform={`translate(${x}, ${y}) rotate(${i * 23})`}>
+                <ellipse cx="0" cy="0" rx="22" ry="14" fill="#7c3aed" />
+                <ellipse cx="0" cy="0" rx="13" ry="8" fill="#000" />
+                <ellipse cx="-11" cy="-8" rx="6" ry="4" fill="#7c3aed" />
+                <ellipse cx="11" cy="-8" rx="6" ry="4" fill="#7c3aed" />
+                <ellipse cx="-10" cy="8" rx="5" ry="3" fill="#7c3aed" />
+                <ellipse cx="10" cy="8" rx="5" ry="3" fill="#7c3aed" />
+              </g>
+            )
+          })}
+        </svg>
       </div>
 
-      <div className="absolute inset-0 z-10 bg-gradient-to-br from-purple-950/80 via-black/60 to-black/90" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-br from-purple-950/80 via-black/70 to-black/90" />
 
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-700/20 rounded-full blur-3xl z-10" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-2xl z-10" />
 
-      <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-20 text-center px-6 max-w-4xl mx-auto flex flex-col items-center">
+
         <motion.p
-          initial={{ opacity: 0, letterSpacing: '0.5em' }}
-          animate={{ opacity: 1, letterSpacing: '0.3em' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="text-purple-400 text-xs uppercase tracking-[0.4em] mb-6"
         >
@@ -95,6 +81,7 @@ export default function Hero() {
             Our Services
           </a>
         </motion.div>
+
       </div>
 
       <motion.div
@@ -103,7 +90,9 @@ export default function Hero() {
         transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
       >
-        <span className="text-xs tracking-widest uppercase text-purple-400">Scroll</span>
+        <span className="text-xs tracking-widest uppercase text-purple-400">
+          Scroll
+        </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
